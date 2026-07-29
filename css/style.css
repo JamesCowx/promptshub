@@ -5,6 +5,14 @@
 /* --- Reset --- */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
+/* JS-failed fallback (hidden by inline script when JS works) */
+body:not(.js-loaded) .prompts-grid::before{
+  content:'Loading prompts...';
+  display:block;text-align:center;padding:60px 20px;
+  color:var(--text-secondary);font-family:var(--font-body);font-size:1rem;
+}
+body:not(.js-loaded) .no-results{display:none!important}
+
 /* --- Variables --- */
 :root{
   --bg-root:#06060c;
@@ -316,7 +324,6 @@ mark{background:rgba(207,176,110,0.2);color:var(--accent);border-radius:2px;padd
   border-radius:var(--radius-lg);
   padding:26px 28px;
   transition:border-color var(--dur-normal),background var(--dur-normal),box-shadow var(--dur-normal),opacity .45s var(--ease-out),transform .45s var(--ease-out);
-  content-visibility:auto;contain-intrinsic-size:220px;
 }
 .prompt-card::after{
   content:'';position:absolute;top:0;left:0;right:0;height:2px;
