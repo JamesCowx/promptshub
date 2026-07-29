@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A curated, searchable library of 100+ battle-tested AI prompts for developers, designers, and creators — organized by category with one-click copy.">
+  <meta name="theme-color" content="#06060c">
+  <meta name="color-scheme" content="dark">
+
+  <title>PromptsHub &mdash; 100+ Curated AI Prompts</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="PromptsHub — 100+ Curated AI Prompts">
+  <meta property="og:description" content="A stunning, searchable library of battle-tested prompts for web development, design, career growth, and more. Copy, paste, customize.">
+  <meta property="og:type" content="website">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x2728;</text></svg>">
+</head>
+<body>
+
+  <!-- Background Scene -->
+  <div class="bg-scene" aria-hidden="true">
+    <div class="bg-orb"></div>
+    <div class="bg-orb"></div>
+    <div class="bg-orb"></div>
+    <div class="bg-orb"></div>
+  </div>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-noise" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-brand" aria-label="PromptsHub home">
+        <div class="nav-logo" aria-hidden="true">&#x2728;</div>
+        <span class="nav-title">PromptsHub</span>
+      </a>
+      <div class="nav-stats">
+        <strong id="promptCount">0</strong> prompts &middot; <strong id="categoryCount">0</strong> categories
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main App -->
+  <div id="app">
+
+    <!-- Hero -->
+    <header class="hero">
+      <div class="hero-tag">Curated Prompt Library</div>
+      <h1>The prompts behind <em>great</em> work</h1>
+      <p class="hero-sub">
+        A hand-picked, ever-growing collection of 100+ battle-tested AI prompts.
+        Built for instant productivity. Copy, paste, customize.
+      </p>
+      <!-- Stats -->
+      <div class="stats-bar">
+        <div class="stat-item">
+          <div class="stat-number" id="statPrompts">0</div>
+          <div class="stat-label">Total Prompts</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" id="statCategories">0</div>
+          <div class="stat-label">Categories</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">&#x26A1;</div>
+          <div class="stat-label">Instant Copy</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">&#x1F50D;</div>
+          <div class="stat-label">Full-Text Search</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Search -->
+    <section class="search-section">
+      <div class="search-wrapper">
+        <span class="search-icon" aria-hidden="true">&#x1F50D;</span>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search prompts by title, tag, or keyword..."
+          autocomplete="off"
+          aria-label="Search prompts"
+        >
+        <span class="search-hint">/</span>
+        <button class="search-clear" id="searchClear" aria-label="Clear search">&times;</button>
+      </div>
+    </section>
+
+    <!-- Category Filters -->
+    <section class="categories" id="categories" aria-label="Filter by category"></section>
+
+    <!-- Results Info -->
+    <div class="results-info">
+      <span class="results-count" id="resultsCount">Showing all prompts</span>
+    </div>
+
+    <!-- Prompt Grid -->
+    <section class="prompts-grid" id="promptsGrid" aria-label="Prompt cards"></section>
+
+    <!-- No Results -->
+    <div class="no-results" id="noResults" style="display:none">
+      <div class="no-results-icon">&#x1F50E;</div>
+      <h3>Nothing matched that search</h3>
+      <p>Try different keywords or pick a category above.</p>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>PromptsHub &mdash; A living collection for <span>better AI results</span>. No fluff, just prompts that deliver.</p>
+  </footer>
+
+  <!-- Keyboard Hint -->
+  <div class="kb-hint" id="kbHint">/ to search &middot; Esc to reset &middot; Ctrl+K to focus</div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+    <div id="modalDetail"></div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/data-new.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
