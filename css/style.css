@@ -345,10 +345,10 @@ mark{background:rgba(207,176,110,0.2);color:var(--accent);border-radius:2px;padd
 }
 .prompt-card::after{
   content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,var(--cat-color,var(--accent)),transparent 70%);
-  opacity:.35;transition:opacity var(--dur-normal);
+  background:linear-gradient(90deg,var(--cat-color,var(--accent)),transparent 80%);
+  opacity:.3;transition:opacity var(--dur-normal),height var(--dur-fast);
 }
-.prompt-card:hover::after{opacity:1}
+.prompt-card:hover::after{opacity:1;height:3px}
 
 .prompt-card.revealed{opacity:1;transform:translateY(0) scale(1)}
 .prompt-card:not(.revealed){opacity:0;transform:translateY(20px) scale(.97)}
