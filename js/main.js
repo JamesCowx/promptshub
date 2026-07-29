@@ -291,14 +291,18 @@ function bindEvents() {
 
   /* Card grid — clicks and keyboard */
   gridEl.addEventListener('click', e => {
-    const btn = e.target.closest('button');
-    if (btn && btn.dataset.action === 'copy') {
+    /* Card click handler */
+    if (btn) {
+      if (btn.dataset.action === 'copy') {
+        copyPrompt(btn.dataset.id, btn);
+      } else {
+        /* view button — open the card's modal */
+        const card = btn.closest('.prompt-card');
+        if (card) openModal(card.dataset.id);
+      }
       e.stopPropagation();
-      copyPrompt(btn.dataset.id, btn);
       return;
     }
-    /* Ignore if user clicked a button other than copy */
-    if (btn) return;
 
     const card = e.target.closest('.prompt-card');
     if (card) openModal(card.dataset.id);
