@@ -387,6 +387,9 @@ function bindEvents() {
   /* Scroll to top visibility */
   window.addEventListener('scroll', () => {
     if (scrollTopBtn) scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
+    /* Nav background deepens on scroll */
+    const nav = document.querySelector('nav');
+    if (nav) nav.classList.toggle('nav-scrolled', window.scrollY > 50);
   }, { passive: true });
 
   /* Scroll to top click */
