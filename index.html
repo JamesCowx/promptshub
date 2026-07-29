@@ -7,26 +7,28 @@
   <meta name="theme-color" content="#06060c">
   <meta name="color-scheme" content="dark">
 
-  <title>PromptsHub &mdash; 100+ Curated AI Prompts</title>
+  <title>PromptsHub — 100+ Curated AI Prompts</title>
 
-  <!-- Open Graph -->
   <meta property="og:title" content="PromptsHub — 100+ Curated AI Prompts">
-  <meta property="og:description" content="A stunning, searchable library of battle-tested prompts for web development, design, career growth, and more. Copy, paste, customize.">
+  <meta property="og:description" content="A stunning, searchable library of battle-tested prompts for web development, design, career, cloud, and more. Copy, paste, customize.">
   <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Styles -->
+  <link rel="canonical" href="https://jamescowx.github.io/promptshub/">
+
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x2728;</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%23cfb06e'/><stop offset='100%' stop-color='%23e6c680'/></linearGradient></defs><circle cx='50' cy='50' r='42' fill='url(%23g)'/><text x='50' y='68' text-anchor='middle' font-size='46'>&#x2728;</text></svg>">
 </head>
 <body>
 
+  <!-- Skip Navigation -->
+  <a href="#mainContent" class="skip-link">Skip to content</a>
+
   <!-- Background Scene -->
   <div class="bg-scene" aria-hidden="true">
-    <div class="bg-orb"></div>
     <div class="bg-orb"></div>
     <div class="bg-orb"></div>
     <div class="bg-orb"></div>
@@ -47,73 +49,76 @@
     </div>
   </nav>
 
-  <!-- Main App -->
-  <div id="app">
+  <!-- Main Content -->
+  <main id="mainContent">
 
-    <!-- Hero -->
-    <header class="hero">
-      <div class="hero-tag">Curated Prompt Library</div>
-      <h1>The prompts behind <em>great</em> work</h1>
-      <p class="hero-sub">
-        A hand-picked, ever-growing collection of 100+ battle-tested AI prompts.
-        Built for instant productivity. Copy, paste, customize.
-      </p>
-      <!-- Stats -->
-      <div class="stats-bar">
-        <div class="stat-item">
-          <div class="stat-number" id="statPrompts">0</div>
-          <div class="stat-label">Total Prompts</div>
+    <div id="app">
+
+      <!-- Hero -->
+      <header class="hero">
+        <div class="hero-tag">Curated Prompt Library</div>
+        <h1>The prompts behind <em>great</em> work</h1>
+        <p class="hero-sub">
+          From concept to code in a single paste. 100+ battle-tested AI prompts built for instant productivity &mdash; no fluff, just results.
+        </p>
+        <div class="stats-bar">
+          <div class="stat-item">
+            <div class="stat-number" id="statPrompts">0</div>
+            <div class="stat-label">Prompts</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" id="statCategories">0</div>
+            <div class="stat-label">Categories</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" aria-hidden="true">&#x26A1;</div>
+            <div class="stat-label">Instant Copy</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" aria-hidden="true">&#x1F50D;</div>
+            <div class="stat-label">Full Search</div>
+          </div>
         </div>
-        <div class="stat-item">
-          <div class="stat-number" id="statCategories">0</div>
-          <div class="stat-label">Categories</div>
+      </header>
+
+      <!-- Search -->
+      <section class="search-section" aria-label="Search prompts">
+        <div class="search-wrapper">
+          <span class="search-icon" aria-hidden="true">&#x1F50D;</span>
+          <input
+            type="text"
+            id="searchInput"
+            class="search-input"
+            placeholder="Search by title, tag, or keyword..."
+            autocomplete="off"
+            aria-label="Search prompts"
+          >
+          <span class="search-hint" aria-hidden="true">/</span>
+          <button class="search-clear" id="searchClear" aria-label="Clear search">&times;</button>
         </div>
-        <div class="stat-item">
-          <div class="stat-number">&#x26A1;</div>
-          <div class="stat-label">Instant Copy</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">&#x1F50D;</div>
-          <div class="stat-label">Full-Text Search</div>
-        </div>
+      </section>
+
+      <!-- Category Filters -->
+      <nav class="categories" id="categories" aria-label="Filter by category"></nav>
+
+      <!-- Results -->
+      <div class="results-info">
+        <span class="results-count" id="resultsCount">Showing all prompts</span>
       </div>
-    </header>
 
-    <!-- Search -->
-    <section class="search-section">
-      <div class="search-wrapper">
-        <span class="search-icon" aria-hidden="true">&#x1F50D;</span>
-        <input
-          type="text"
-          id="searchInput"
-          placeholder="Search prompts by title, tag, or keyword..."
-          autocomplete="off"
-          aria-label="Search prompts"
-        >
-        <span class="search-hint">/</span>
-        <button class="search-clear" id="searchClear" aria-label="Clear search">&times;</button>
+      <!-- Prompt Grid -->
+      <section class="prompts-grid" id="promptsGrid" aria-label="Prompt cards" role="list"></section>
+
+      <!-- No Results -->
+      <div class="no-results" id="noResults">
+        <div class="no-results-icon" aria-hidden="true">&#x1F50E;</div>
+        <h3>Nothing matched that</h3>
+        <p>Try different keywords or pick a category above.</p>
       </div>
-    </section>
 
-    <!-- Category Filters -->
-    <section class="categories" id="categories" aria-label="Filter by category"></section>
-
-    <!-- Results Info -->
-    <div class="results-info">
-      <span class="results-count" id="resultsCount">Showing all prompts</span>
     </div>
 
-    <!-- Prompt Grid -->
-    <section class="prompts-grid" id="promptsGrid" aria-label="Prompt cards"></section>
-
-    <!-- No Results -->
-    <div class="no-results" id="noResults" style="display:none">
-      <div class="no-results-icon">&#x1F50E;</div>
-      <h3>Nothing matched that search</h3>
-      <p>Try different keywords or pick a category above.</p>
-    </div>
-
-  </div>
+  </main>
 
   <!-- Footer -->
   <footer>
@@ -121,7 +126,7 @@
   </footer>
 
   <!-- Keyboard Hint -->
-  <div class="kb-hint" id="kbHint">/ to search &middot; Esc to reset &middot; Ctrl+K to focus</div>
+  <div class="kb-hint" id="kbHint" aria-hidden="true">/ search &middot; Esc close &middot; Ctrl+K focus</div>
 
   <!-- Modal -->
   <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
@@ -132,8 +137,9 @@
   <div class="toast-container" id="toastContainer" aria-live="polite"></div>
 
   <!-- Scripts -->
-  <script src="js/data.js"></script>
-  <script src="js/data-new.js"></script>
-  <script src="js/main.js"></script>
+  <script defer src="js/data.js"></script>
+  <script defer src="js/data-new.js"></script>
+  <script defer src="js/main.js"></script>
+
 </body>
 </html>
