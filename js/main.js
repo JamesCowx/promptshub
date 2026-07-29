@@ -48,6 +48,7 @@ const modalDetail   = document.getElementById('modalDetail');
 const toastContainer = document.getElementById('toastContainer');
 const kbHintEl      = document.getElementById('kbHint');
 const scrollTopBtn  = document.getElementById('scrollTop');
+const skeletonGrid  = document.getElementById('skeletonGrid');
 
 /* ============================================================
    UTILS
@@ -99,6 +100,8 @@ function init() {
   renderCategories();
   renderAllCards();
   applyFilters();
+  /* Hide skeleton once real cards are rendered */
+  if (skeletonGrid) skeletonGrid.style.display = 'none';
   bindEvents();
 
   animateCounter(document.getElementById('promptCount'), promptData.length, 1400);

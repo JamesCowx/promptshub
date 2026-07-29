@@ -12,6 +12,10 @@ body:not(.js-loaded) .prompts-grid::before{
   color:var(--text-secondary);font-family:var(--font-body);font-size:1rem;
 }
 body:not(.js-loaded) .no-results{display:none!important}
+body.js-loaded .skeleton-grid{display:none}
+
+/* Screen reader only */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 /* --- Variables --- */
 :root{
@@ -543,6 +547,34 @@ footer{
   max-width:var(--max-width);margin:0 auto;
 }
 footer span{color:var(--accent)}
+
+/* ============================================================
+   SKELETON LOADER
+   ============================================================ */
+.skeleton-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));
+  gap:18px;margin-bottom:64px;
+}
+.skeleton-card{
+  background:var(--bg-card);border:1px solid var(--border-card);
+  border-radius:var(--radius-lg);padding:26px 28px;
+}
+.skeleton-line{
+  height:14px;border-radius:7px;margin-bottom:12px;
+  background:linear-gradient(90deg,rgba(255,255,255,0.03) 25%,rgba(255,255,255,0.07) 50%,rgba(255,255,255,0.03) 75%);
+  background-size:200% 100%;
+}
+@media(prefers-reduced-motion:no-preference){
+  .skeleton-line{animation:shimmerSkeleton 1.8s ease-in-out infinite}
+}
+@keyframes shimmerSkeleton{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.skeleton-line:first-child{width:65%;height:20px;margin-bottom:16px}
+.skeleton-line:nth-child(2){width:45%;margin-bottom:20px}
+.skeleton-line:nth-child(3){width:90%}
+.skeleton-line:nth-child(4){width:75%}
+.skeleton-line:nth-child(5){width:55%}
+.prompts-grid.loaded + .skeleton-grid,
+.prompts-grid:not(:empty) ~ .skeleton-grid{display:none}
 
 /* ============================================================
    KB HINT
