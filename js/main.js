@@ -47,6 +47,7 @@ const modalOverlay  = document.getElementById('modalOverlay');
 const modalDetail   = document.getElementById('modalDetail');
 const toastContainer = document.getElementById('toastContainer');
 const kbHintEl      = document.getElementById('kbHint');
+const scrollTopBtn  = document.getElementById('scrollTop');
 
 /* ============================================================
    UTILS
@@ -191,6 +192,11 @@ function applyFilters() {
   } else {
     noResultsEl.classList.remove('visible');
     resultsCountEl.innerHTML = `Showing <strong>${visibleCount}</strong> of <strong>${promptData.length}</strong> prompt${visibleCount !== 1 ? 's' : ''}`;
+    /* Smooth scroll to first result if scrolled down */
+    const firstCard = gridEl.querySelector('.prompt-card:not(.hidden-card)');
+    if (firstCard && window.scrollY > firstCard.offsetTop - 100) {
+      firstCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 }
 
@@ -374,6 +380,18 @@ function bindEvents() {
   /* KB hint visibility */
   searchInput.addEventListener('focus', () => { if (kbHintEl) kbHintEl.classList.add('hidden-hint'); });
   searchInput.addEventListener('blur', () => { if (kbHintEl) kbHintEl.classList.remove('hidden-hint'); });
+
+  /* Scroll to top visibility */
+  window.addEventListener('scroll', () => {
+    if (scrollTopBtn) scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
+  }, { passive: true });
+
+  /* Scroll to top click */
+  if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 }
 
 /* ============================================================

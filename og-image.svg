@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#06060c"/>
+      <stop offset="100%" stop-color="#0e0e1a"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#cfb06e"/>
+      <stop offset="100%" stop-color="#e6c680"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="950" cy="150" r="300" fill="rgba(207,176,110,0.08)" filter="blur(60px)"/>
+  <circle cx="200" cy="450" r="250" fill="rgba(139,132,226,0.06)" filter="blur(60px)"/>
+  <rect x="100" y="180" width="140" height="140" rx="32" fill="url(#gold)"/>
+  <text x="170" y="280" text-anchor="middle" font-size="80" fill="#1a1a18">&#x2728;</text>
+  <text x="280" y="280" font-family="Georgia,serif" font-size="72" font-weight="700" fill="#e8e6e1">PromptsHub</text>
+  <text x="280" y="335" font-family="Arial,sans-serif" font-size="28" fill="#a09eaa">The prompts behind great work</text>
+  <text x="280" y="385" font-family="monospace" font-size="22" fill="#5e5d70">110+ prompts &middot; 15 categories &middot; 1-click copy</text>
+</svg>

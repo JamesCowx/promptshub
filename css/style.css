@@ -312,6 +312,8 @@ mark{background:rgba(207,176,110,0.2);color:var(--accent);border-radius:2px;padd
 .prompts-grid{
   display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));
   gap:18px;margin-bottom:64px;
+  /* Smooth scroll anchor for search results */
+  scroll-margin-top:calc(var(--nav-h) + 20px);
 }
 
 /* ============================================================
@@ -595,9 +597,65 @@ footer span{color:var(--accent)}
 }
 
 @media print{
-  .bg-scene,.bg-grid,.bg-noise,.kb-hint,.toast-container,.modal-overlay,nav{display:none!important}
+  .bg-scene,.bg-grid,.bg-noise,.kb-hint,.toast-container,.modal-overlay,nav,.scroll-top{display:none!important}
   body{background:#fff;color:#111}
   .prompt-card{break-inside:avoid;border:1px solid #ddd;box-shadow:none;background:#fff}
   .card-description,.tag{color:#555}
   .btn{display:none}
+}
+
+/* ============================================================
+   SCROLL TO TOP
+   ============================================================ */
+.scroll-top{
+  position:fixed;bottom:28px;right:28px;z-index:60;
+  width:42px;height:42px;border-radius:50%;
+  background:var(--bg-card);border:1px solid var(--border-card);
+  color:var(--text-secondary);font-size:1.2rem;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:all var(--dur-normal);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+}
+.scroll-top.visible{opacity:1;pointer-events:auto}
+.scroll-top:hover{
+  color:var(--accent);border-color:var(--accent);
+  background:var(--accent-soft);box-shadow:0 0 16px var(--accent-glow);
+  transform:translateY(-2px);
+}
+.scroll-top:focus-visible{outline:2px solid var(--accent-ring);outline-offset:2px}
+.scroll-top:active{transform:translateY(0) scale(0.94)}
+
+/* ============================================================
+   ENHANCED CARD POLISH
+   ============================================================ */
+.prompt-card::before{
+  content:'';position:absolute;inset:-1px;border-radius:inherit;z-index:-1;
+  background:linear-gradient(135deg,var(--cat-color,var(--accent)),transparent 60%,var(--cat-color,var(--accent)));
+  opacity:0;transition:opacity var(--dur-normal);
+}
+.prompt-card:hover::before{opacity:.06}
+
+/* Card title subtle weight boost on hover */
+.prompt-card:hover .card-title{color:#fff}
+
+/* Card icon gradient background */
+.card-icon{
+  background:linear-gradient(135deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01));
+}
+.prompt-card:hover .card-icon{
+  background:linear-gradient(135deg,var(--accent-soft),rgba(207,176,110,0.04));
+  border-color:rgba(207,176,110,0.22);
+  box-shadow:0 0 16px rgba(207,176,110,0.08);
+}
+
+/* Tag hover */
+.tag{transition:all var(--dur-fast)}
+.prompt-card:hover .tag{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.1)}
+
+/* Description readability */
+.card-description{-webkit-font-smoothing:antialiased}
+
+@media(max-width:520px){
+  .scroll-top{bottom:18px;right:18px;width:36px;height:36px;font-size:1rem}
 }
