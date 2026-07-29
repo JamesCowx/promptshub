@@ -2010,9 +2010,9 @@ Design the examples for a specific task. Make them detailed and realistic.`,
    "If the input doesn't contain enough information to fill required fields, output: {\"error\": \"Insufficient data\", \"missing_fields\": [...]}"
 
 7. Output wrapper:
-   ```json
+   \`\`\`json
    { ... }
-   ```
+   \`\`\`
 
 This prompt should produce output that can be reliably parsed by JSON.parse() or equivalent without any cleanup.`,
     tags: ["prompt-engineering", "structured-output", "json"]
